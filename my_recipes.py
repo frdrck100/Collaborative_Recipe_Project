@@ -1,25 +1,26 @@
-# Create a dictionary to store the recipes
-recipes = {}
+# Define a dictionary to store recipes
+recipe_book = {}
 
-# Add a recipe to the dictionary
-recipes["Chocolate Chip Cookies"] = {
-    "ingredients": ["1 cup (2 sticks) unsalted butter, softened", "1 cup granulated sugar", "1 cup packed light brown sugar", "2 large eggs", "2 teaspoons vanilla extract", "2 1/4 cups all-purpose flour", "1 teaspoon baking soda", "1 teaspoon salt"],
-    "instructions": [
-        "Preheat oven to 375 degrees F (190 degrees C).",
-        "Cream together the butter, granulated sugar, and brown sugar until light and fluffy.",
-        "Beat in the eggs one at a time, then stir in the vanilla.",
-        "In a separate bowl, whisk together the flour, baking soda, and salt.",
-        "Gradually add the dry ingredients to the wet ingredients, mixing until just combined.",
-        "Chill the dough for at least 30 minutes.",
-        "Roll the dough into 1-inch balls and place on ungreased baking sheets.",
-        "Bake for 10-12 minutes, or until golden brown.",
-    ],
-}
+# Function to add a recipe to the recipe book
+def add_recipe(recipe_name, ingredients, instructions):
+    recipe = {
+        "ingredients": ingredients,
+        "instructions": instructions
+    }
+    recipe_book[recipe_name] = recipe
 
-# Print the recipes
-for recipe_name, recipe_details in recipes.items():
-    print(f"{recipe_name}:")
-    for ingredient in recipe_details["ingredients"]:
-        print(f"\t{ingredient}")
-    for instruction in recipe_details["instructions"]:
-        print(f"\t{instruction}")
+# Add recipes to the recipe book
+add_recipe("Ghanaian Jollof Rice", ["2 cups rice", "1 cup tomato sauce", 
+            "2 onion"], "1. Cook rice.\n2. Mix with tomato sauce and onion.")
+
+add_recipe("Banana Pancakes", ["2 ripe bananas", "1 cup flour", "1 egg"],
+           "1. Mash bananas.\n2. Mix with flour and egg.\n3. Cook as pancakes.")
+
+# Print the recipe book
+for recipe_name, recipe in recipe_book.items():
+    print(f"Recipe: {recipe_name}")
+    print("Ingredients:", ", ".join(recipe["ingredients"]))
+    print("Instructions:")
+    for step_num, step in enumerate(recipe["instructions"].split("\n"), start=1):
+        print(f"Step {step_num}: {step}")
+    print("=" * 30)
