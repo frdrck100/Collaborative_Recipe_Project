@@ -1,32 +1,25 @@
-# Define a dictionary to store recipes
-recipe_book = {}
+# Create a dictionary to store the recipes
+recipes = {}
 
-# Function to add a recipe to the recipe book
-def add_recipe(recipe_name, ingredients, instructions):
-    recipe = {
-        "ingredients": ingredients,
-        "instructions": instructions
-    }
-    recipe_book[recipe_name] = recipe
+# Add a recipe to the dictionary
+recipes["Chocolate Chip Cookies"] = {
+    "ingredients": ["1 cup (2 sticks) unsalted butter, softened", "1 cup granulated sugar", "1 cup packed light brown sugar", "2 large eggs", "2 teaspoons vanilla extract", "2 1/4 cups all-purpose flour", "1 teaspoon baking soda", "1 teaspoon salt"],
+    "instructions": [
+        "Preheat oven to 375 degrees F (190 degrees C).",
+        "Cream together the butter, granulated sugar, and brown sugar until light and fluffy.",
+        "Beat in the eggs one at a time, then stir in the vanilla.",
+        "In a separate bowl, whisk together the flour, baking soda, and salt.",
+        "Gradually add the dry ingredients to the wet ingredients, mixing until just combined.",
+        "Chill the dough for at least 30 minutes.",
+        "Roll the dough into 1-inch balls and place on ungreased baking sheets.",
+        "Bake for 10-12 minutes, or until golden brown.",
+    ],
+}
 
-# Add recipes to the recipe book
-def main():
-    while True:
-        print("\n1. Add a new recipe")
-        print("2. Exit")
-        choice = input("Enter your choice: ")
-
-        if choice == "1":
-            recipe_name = input("Enter recipe name: ")
-            ingredients = input("Enter ingredients (comma-separated): ").split(",")
-            instructions = input("Enter instructions (one per line, end with an empty line):\n")
-            add_recipe(recipe_name, ingredients, instructions)
-            print("Recipe added successfully!")
-        elif choice == "2":
-            break
-        else:
-            print("Invalid choice. Try again.")
-
-# Run the main function
-if __name__ == "__main__":
-    main()
+# Print the recipes
+for recipe_name, recipe_details in recipes.items():
+    print(f"{recipe_name}:")
+    for ingredient in recipe_details["ingredients"]:
+        print(f"\t{ingredient}")
+    for instruction in recipe_details["instructions"]:
+        print(f"\t{instruction}")
